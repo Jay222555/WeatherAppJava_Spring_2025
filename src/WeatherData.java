@@ -5,7 +5,6 @@ public class WeatherData {
     private String weatherDesciption;
     private String state; // not used yet
     private String placeName; //not used yet
-    private String country; //not used yet
     private double windDirection;
     private double windSpeed;
 
