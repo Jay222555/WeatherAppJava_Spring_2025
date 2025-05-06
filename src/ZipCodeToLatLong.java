@@ -73,7 +73,7 @@ public class ZipCodeToLatLong {
                     System.out.println("\n--- Current Weather ---");
                     System.out.println("Temperature: " + temperature + "°C");
                     System.out.println("Wind Speed: " + windSpeed + " m/s");
-                    System.out.println("Wind Direction: " + windDirection + "°");
+                    System.out.println("Wind Direction: " + getCompassDirection(windDirection));
                 } else {
                     System.out.println("Error: Unable to fetch weather data.");
                 }
@@ -84,5 +84,10 @@ public class ZipCodeToLatLong {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+    }
+    //Helper method to convert degrees  (angle) to wind direction
+    private static String getCompassDirection(double angle) {
+        String[] directions = {"North", "Northeast", "East", "Southeast", "South", "Southwest", "West", "Northwest", "North"};
+        return directions[(int)Math.round(((angle % 360) / 45))];
     }
 }
