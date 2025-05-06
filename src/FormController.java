@@ -1,11 +1,18 @@
-import java.awt.*;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 
-public class MainController {
+
+public class FormController {
     @FXML private TextField zipCodeField;
-    @FXML private Label temperatureLabel;
+    @FXML
+    private Label temperatureLabel;
     @FXML private Label locationLabel;
     @FXML private Label windLabel;
     @FXML private Label errorLabel;
+    @FXML private Button enterButton;
+    @FXML private Button resetButton;
 
     @FXML
     private void handleGetWeather() {
@@ -22,8 +29,16 @@ public class MainController {
                     weather.getWindSpeed(),
                     getCompassDirection(weather.getWindDirection())));
         } catch (Exception e) {
-            errorLabel.setText("Error: " + e.getMessage());
+            errorLabel.setText("Error: Invalid Zip");
         }
+    }
+
+    @FXML
+    private void resetText() {
+        locationLabel.setText("");
+        temperatureLabel.setText("");
+        windLabel.setText("");
+        zipCodeField.setText("");
     }
 
     private String getCompassDirection(double angle) {
